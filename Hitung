@@ -14,6 +14,10 @@
             kembali = 0; // Set kembali ke 0 jika hasilnya negatif
         }
 
+        // Menetapkan nilai kembali ke dalam session PHP
+        <?php echo "var kembali_session = " . $kembali . ";" ?>
+        <?php echo "sessionStorage.setItem('kembali', kembali_session);" ?>
+
         document.getElementById('kembalianText').innerText = 'Kembalian : Rp. ' + formatRupiah(kembali);
     });
 
