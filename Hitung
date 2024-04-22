@@ -1,3 +1,6 @@
+<?php
+// Tangkap nilai input tanggal dari formulir
+$search_date = isset($_GET['search_date']) ? $_GET['search_date'] : '';
 
 // Buat query SQL dengan klausul WHERE untuk mencari berdasarkan tanggal
 $query = "SELECT * FROM your_table_name WHERE DATE(order_date) = '$search_date'";
@@ -6,13 +9,32 @@ $query = "SELECT * FROM your_table_name WHERE DATE(order_date) = '$search_date'"
 // Pastikan Anda menyesuaikan query dan variabel dengan struktur PHP yang Anda miliki.
 $result = mysqli_query($koneksi, $query);
 
-// Tampilkan hasilnya dalam card
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        echo "<div class='card'>";
-        // Tampilkan data sesuai kebutuhan Anda
-        echo "</div>";
-    }
-} else {
-    echo "Data tidak ditemukan.";
+// Tampilkan hasilnya dalam tabel
+echo "<table class='table table-hover'>";
+echo "<thead>";
+echo "<tr>";
+echo "<th>#</th>";
+echo "<th>ID Order</th>";
+// Tambahkan kolom lain sesuai dengan kebutuhan
+echo "</tr>";
+echo "</thead>";
+echo "<tbody>";
+
+$no = 1;
+while ($row = mysqli_fetch_assoc($result)) {
+    echo "<tr>";
+    echo "<td>" . $no++ . "</td>";
+    echo "<td>" . $row['id_order'] . "</td>";
+    // Tambahkan kolom lain sesuai dengan kebutuhan
+    echo "</tr>";
 }
+
+echo "</tbody>";
+echo "</table>";
+
+// Bebaskan hasil query
+mysqli_free_result($result);
+
+// Tutup koneksi
+mysqli_close($koneksi);
+?>
