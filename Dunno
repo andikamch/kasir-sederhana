@@ -1,0 +1,39 @@
+<form action="" method="post">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="mb-3 row">
+                            <label for="nama_cust" class="col-lg-3 col-form-label">Nama Customer:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="nama_cust" id="nama_cust" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="no_order" class="col-lg-3 col-form-label">Nomor Order:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="no_order" id="no_order" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="order_type" class="col-lg-3 col-form-label">Tipe Order:</label>
+                            <div class="col-lg-9">
+                                <select name="order_type" id="order_type" class="form-control">
+                                    <option value="">Silahkan pilih tipe</option>
+                                    <option value="Dine_In">Dine In</option>
+                                    <option value="To_Go">To Go</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row justify-content-end">
+                            <div class="col-lg-9">
+                                <button type="submit" name="simpan_cust" class="btn btn-primary">Simpan Nama Customer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
