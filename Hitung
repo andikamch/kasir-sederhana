@@ -1,40 +1,5 @@
-<?php
-// Tangkap nilai input tanggal dari formulir
-$search_date = isset($_GET['search_date']) ? $_GET['search_date'] : '';
-
-// Buat query SQL dengan klausul WHERE untuk mencari berdasarkan tanggal
-$query = "SELECT * FROM your_table_name WHERE DATE(order_date) = '$search_date'";
-
-// Eksekusi query SQL
-// Pastikan Anda menyesuaikan query dan variabel dengan struktur PHP yang Anda miliki.
-$result = mysqli_query($koneksi, $query);
-
-// Tampilkan hasilnya dalam tabel
-echo "<table class='table table-hover'>";
-echo "<thead>";
-echo "<tr>";
-echo "<th>#</th>";
-echo "<th>ID Order</th>";
-// Tambahkan kolom lain sesuai dengan kebutuhan
-echo "</tr>";
-echo "</thead>";
-echo "<tbody>";
-
-$no = 1;
-while ($row = mysqli_fetch_assoc($result)) {
-    echo "<tr>";
-    echo "<td>" . $no++ . "</td>";
-    echo "<td>" . $row['id_order'] . "</td>";
-    // Tambahkan kolom lain sesuai dengan kebutuhan
-    echo "</tr>";
-}
-
-echo "</tbody>";
-echo "</table>";
-
-// Bebaskan hasil query
-mysqli_free_result($result);
-
-// Tutup koneksi
-mysqli_close($koneksi);
-?>
+"SELECT o.*, p.name AS product_name, u.username AS customer_name 
+          FROM orders o 
+          JOIN tbl_products p ON o.id_product = p.id_product 
+          JOIN tbl_users u ON o.id_user = u.id_user 
+          WHERE DATE(o.order_date) = '$search_date'";
