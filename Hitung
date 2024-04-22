@@ -13,10 +13,13 @@
         if (kembali < 0) {
             kembali = 0; // Set kembali ke 0 jika hasilnya negatif
         }
-
-        // Menetapkan nilai kembali ke dalam session PHP
-        <?php echo "var kembali_session = " . $kembali . ";" ?>
-        <?php echo "sessionStorage.setItem('kembali', kembali_session);" ?>
+        
+        // Simpan kembali ke dalam $_SESSION
+        <?php echo "var sessionKembali = " . $_SESSION['kembali'] . ";" ?>
+        if (sessionKembali !== undefined) {
+            kembali = Math.max(kembali, sessionKembali); // Pastikan kembali tidak kurang dari nilai sebelumnya
+        }
+        <?php echo "$_SESSION['kembali'] = " ?> kembali;
 
         document.getElementById('kembalianText').innerText = 'Kembalian : Rp. ' + formatRupiah(kembali);
     });
