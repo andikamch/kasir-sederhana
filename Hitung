@@ -8,6 +8,12 @@
         var bayar = parseInt(this.value);
         var total = <?php echo $totalharga; ?>;
         var kembali = bayar - total;
+        
+        // Menyaring nilai kembalian agar tidak negatif
+        if (kembali < 0) {
+            kembali = 0; // Set kembali ke 0 jika hasilnya negatif
+        }
+
         document.getElementById('kembalianText').innerText = 'Kembalian : Rp. ' + formatRupiah(kembali);
     });
 
@@ -27,4 +33,3 @@
         return rupiah;
     }
 </script>
-
