@@ -1,11 +1,14 @@
-<input type="number" name="bayar" id="bayar" class="form-control" required>
+<h4>Bayar : 
+    <input class="form-control" type="number" name="bayar" id="bayar">
+</h4>
+<h4 id="kembalianText">Kembalian :</h4>
 
 <script>
     document.getElementById('bayar').addEventListener('input', function() {
-        var price = parseInt(this.value);
+        var bayar = parseInt(this.value);
         var total = <?php echo $totalharga; ?>;
-        var kembali = price - total;
-        document.getElementById('kembali').innerText = 'Rp. ' + formatRupiah(kembali);
+        var kembali = bayar - total;
+        document.getElementById('kembalianText').innerText = 'Kembalian : Rp. ' + formatRupiah(kembali);
     });
 
     function formatRupiah(angka) {
@@ -24,3 +27,4 @@
         return rupiah;
     }
 </script>
+
